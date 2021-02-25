@@ -1,0 +1,20 @@
+{
+  "translations": {
+    "Feedback": "Feedback",
+    "Currently we do not support giving feedback to anonymous users.": "Currently we do not support giving feedback to anonymous users.",
+    "By clicking \"Delete\", you will be deleting the student's response. This action cannot be undone.": "By clicking \"Delete\", you will be deleting the student's response. This action cannot be undone.",
+    "Text Input": "Text Input",
+    "Save": "Save",
+    "Type Here": "Type Here",
+    "Submit feedback that will be visible to the student.": "Submit feedback that will be visible to the student.",
+    "Delete Student Response": "Delete Student Response",
+    "Delete": "Delete",
+    "Cancel": "Cancel",
+    "No Responses": "No Responses",
+    "These are the responses submitted by the students.": "These are the responses submitted by the students.",
+    "Student": "Student",
+    "Input": "Input",
+    "Settings": "Settings",
+    "Show Header to Students": "Show Header to Students"
+  }
+}
