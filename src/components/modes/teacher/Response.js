@@ -18,6 +18,12 @@ import {
 import { FEEDBACK } from '../../../config/appInstanceResourceTypes';
 import FormDialog from '../../common/FormDialog';
 import { showErrorToast } from '../../../utils/toasts';
+import {
+  buildDeleteButton,
+  buildFeedbackButton,
+  DELETE_RESPONSE_BUTTON_CYPRESS,
+  FEEDBACK_BUTTON_CYPRESS,
+} from '../../../config/selectors';
 
 class Response extends Component {
   state = {
@@ -48,13 +54,13 @@ class Response extends Component {
     feedbackResource: {},
   };
 
-  handleToggleConfirmDialog = open => () => {
+  handleToggleConfirmDialog = (open) => () => {
     this.setState({
       confirmDialogOpen: open,
     });
   };
 
-  handleToggleFeedbackDialog = open => () => {
+  handleToggleFeedbackDialog = (open) => () => {
     this.setState({
       feedbackDialogOpen: open,
     });
@@ -73,7 +79,7 @@ class Response extends Component {
     this.handleToggleConfirmDialog(false)();
   };
 
-  handleSubmitFeedback = feedback => {
+  handleSubmitFeedback = (feedback) => {
     const {
       student,
       feedbackResource,
@@ -109,6 +115,7 @@ class Response extends Component {
     const {
       feedbackResource: { data = '' },
       t,
+      _id,
     } = this.props;
     const { feedbackDialogOpen } = this.state;
 
@@ -116,12 +123,15 @@ class Response extends Component {
       <>
         {data}
         <IconButton
+          data-id={buildFeedbackButton(_id)}
           color="primary"
           onClick={this.handleToggleFeedbackDialog(true)}
+          data-cy={FEEDBACK_BUTTON_CYPRESS}
         >
           <EditIcon />
         </IconButton>
         <FormDialog
+          id={buildFeedbackButton(_id)}
           handleClose={this.handleToggleFeedbackDialog(false)}
           title={t('Feedback')}
           text={t('Submit feedback that will be visible to the student.')}
@@ -145,13 +155,16 @@ class Response extends Component {
         <TableCell>{this.renderFeedbackCell()}</TableCell>
         <TableCell>
           <IconButton
-            data-cy="deleteButton"
+            data-id={buildDeleteButton(_id)}
+            data-cy={DELETE_RESPONSE_BUTTON_CYPRESS}
             color="primary"
             onClick={this.handleToggleConfirmDialog(true)}
           >
             <DeleteIcon />
           </IconButton>
           <ConfirmDialog
+            id={buildDeleteButton(_id)}
+            dataCy="confirmDeleteDialog"
             open={confirmDialogOpen}
             title={t('Delete Student Response')}
             text={t(

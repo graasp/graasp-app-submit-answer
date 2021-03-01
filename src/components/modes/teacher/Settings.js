@@ -14,6 +14,15 @@ import { withTranslation } from 'react-i18next';
 import { closeSettings, patchAppInstance } from '../../../actions';
 import Loader from '../../common/Loader';
 import { DEFAULT_SETTINGS } from '../../../reducers/appInstance';
+import { MAX_ATTEMPTS } from '../../../config/settings';
+import {
+  HEADER_VISIBLITY_CYPRESS,
+  HINT_INPUT_CYPRESS,
+  NUM_ATTEMPTS_ALLOWED_INPUT_CYPRESS,
+  SAVE_SETTINGS_BUTTON_CYPRESS,
+  SETTINGS_MODAL_CYPRESS,
+  SHOW_AUTOMATIC_FEEDBACK_SWITCH_CYPRESS,
+} from '../../../config/selectors';
 
 function getModalStyle() {
   const top = 50;
@@ -153,7 +162,7 @@ class Settings extends Component {
 
     const headerVisibleSwitchControl = (
       <Switch
-        data-cy="headerVisibility"
+        data-cy={HEADER_VISIBLITY_CYPRESS}
         color="primary"
         checked={headerVisible}
         onChange={this.handleChangeSwitch('headerVisible')}
@@ -163,7 +172,7 @@ class Settings extends Component {
 
     const showAutomaticFeedbackSwitchControl = (
       <Switch
-        data-cy="showAutomaticFeedback"
+        data-cy={SHOW_AUTOMATIC_FEEDBACK_SWITCH_CYPRESS}
         color="primary"
         checked={showAutomaticFeedback}
         onChange={this.handleChangeSwitch('showAutomaticFeedback')}
@@ -191,7 +200,7 @@ class Settings extends Component {
           fullWidth
         />
         <TextField
-          id="hint"
+          data-cy={HINT_INPUT_CYPRESS}
           label={t('Hint')}
           value={hint}
           onChange={this.handleChangeTextField('hint')}
@@ -200,14 +209,14 @@ class Settings extends Component {
           fullWidth
         />
         <TextField
-          id="numAttemptsAllowed"
+          data-cy={NUM_ATTEMPTS_ALLOWED_INPUT_CYPRESS}
           label={t('Number of Attempts Possible')}
           type="number"
           value={numAttemptsAllowed}
           onChange={this.handleChangeIntegerField('numAttemptsAllowed')}
           className={classes.textField}
           variant="outlined"
-          inputProps={{ step: 1, max: 10, min: 1 }}
+          inputProps={{ step: 1, max: MAX_ATTEMPTS, min: 1 }}
           fullWidth
         />
         <Divider className={classes.divider} />
@@ -217,6 +226,7 @@ class Settings extends Component {
           className={classes.button}
           onClick={this.handleSave}
           disabled={!hasChanged}
+          data-cy={SAVE_SETTINGS_BUTTON_CYPRESS}
         >
           {t('Save')}
         </Button>
@@ -238,7 +248,7 @@ class Settings extends Component {
     return (
       <div>
         <Modal
-          data-cy="settingsModal"
+          data-cy={SETTINGS_MODAL_CYPRESS}
           aria-labelledby="simple-modal-title"
           aria-describedby="simple-modal-description"
           open={open}

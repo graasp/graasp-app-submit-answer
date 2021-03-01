@@ -7,7 +7,7 @@ import DialogContentText from '@material-ui/core/DialogContentText';
 import DialogTitle from '@material-ui/core/DialogTitle';
 import PropTypes from 'prop-types';
 
-const ConfirmDialog = props => {
+const ConfirmDialog = (props) => {
   const {
     open,
     handleClose,
@@ -16,10 +16,14 @@ const ConfirmDialog = props => {
     text,
     confirmText,
     cancelText,
+    dataCy,
+    id,
   } = props;
   return (
     <div>
       <Dialog
+        id={id}
+        data-cy={dataCy}
         open={open}
         onClose={handleClose}
         aria-labelledby="alert-dialog-title"
@@ -35,7 +39,11 @@ const ConfirmDialog = props => {
           <Button onClick={handleClose} color="primary" autoFocus>
             {cancelText}
           </Button>
-          <Button onClick={handleConfirm} color="secondary">
+          <Button
+            onClick={handleConfirm}
+            color="secondary"
+            data-cy="confirmButton"
+          >
             {confirmText}
           </Button>
         </DialogActions>
@@ -52,12 +60,16 @@ ConfirmDialog.propTypes = {
   text: PropTypes.string,
   confirmText: PropTypes.string,
   cancelText: PropTypes.string,
+  dataCy: PropTypes.string,
+  id: PropTypes.string,
 };
 
 ConfirmDialog.defaultProps = {
   text: '',
   confirmText: 'OK',
   cancelText: 'Cancel',
+  dataCy: '',
+  id: '',
 };
 
 export default ConfirmDialog;

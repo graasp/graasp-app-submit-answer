@@ -59,7 +59,9 @@
     "eject": "react-scripts eject",
     "release": "git add CHANGELOG.md && standard-version -a",
     "cypress:open": "cypress open",
-    "cypress": "npm-run-all --parallel start cypress:open"
+    "cypress": "npm-run-all --parallel start cypress:open",
+    "cypress:headless":"cypress run --headless --browser chrome",
+    "cypress:ci": "env-cmd -f ./.env.test npm-run-all --parallel start cypress:headless"
   },
   "devDependencies": {
     "@commitlint/cli": "12.0.0",

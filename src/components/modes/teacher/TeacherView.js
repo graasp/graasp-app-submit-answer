@@ -16,6 +16,7 @@ import {
 import Responses from './Responses';
 import { INPUT } from '../../../config/appInstanceResourceTypes';
 import Settings from './Settings';
+import { SETTINGS_BUTTON_CYPRESS } from '../../../config/selectors';
 
 export class TeacherView extends Component {
   static propTypes = {
@@ -99,7 +100,7 @@ export class TeacherView extends Component {
         </Grid>
         <Settings />
         <Fab
-          data-cy="settingsButton"
+          data-cy={SETTINGS_BUTTON_CYPRESS}
           color="primary"
           aria-label={t('Settings')}
           className={classes.fab}

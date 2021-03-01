@@ -11,6 +11,7 @@ import { withTranslation } from 'react-i18next';
 import { withStyles } from '@material-ui/core/styles';
 import PropTypes from 'prop-types';
 import Response from './Response';
+import { RESPONSES_CYPRESS } from '../../../config/selectors';
 
 class Responses extends Component {
   static styles = (theme) => ({
@@ -92,7 +93,7 @@ class Responses extends Component {
           {t('These are the responses submitted by the students.')}
         </Typography>
         <Paper className={classes.root}>
-          <Table data-cy="responses" className={classes.table}>
+          <Table data-cy={RESPONSES_CYPRESS} className={classes.table}>
             <TableHead>
               <TableRow>
                 <TableCell>{t('Student')}</TableCell>
