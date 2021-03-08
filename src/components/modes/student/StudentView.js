@@ -25,7 +25,12 @@ import {
 import { FEEDBACK, INPUT } from '../../../config/appInstanceResourceTypes';
 import Loader from '../../common/Loader';
 import { MAX_INPUT_LENGTH } from '../../../config/settings';
-import { HID_HINT, SHOWED_HINT, SAVED } from '../../../config/verbs';
+import {
+  HID_HINT,
+  SHOWED_HINT,
+  SAVED,
+  SUBMITTED_CORRECT_ANSWER,
+} from '../../../config/verbs';
 
 const styles = (theme) => ({
   main: {
@@ -182,6 +187,8 @@ class StudentView extends Component {
       dispatchPostAppInstanceResource,
       dispatchPostAction,
       userId,
+      numAttempts,
+      settings: { numAttemptsAllowed, answer },
     } = this.props;
 
     // trim text
@@ -191,9 +198,9 @@ class StudentView extends Component {
         return { text: _.trim(prevText) };
       },
       () => {
-        const { text } = this.state;
+        const { text: currentText } = this.state;
         dispatchPostAppInstanceResource({
-          data: text,
+          data: currentText,
           type: INPUT,
           userId,
         });
@@ -201,9 +208,23 @@ class StudentView extends Component {
         dispatchPostAction({
           verb: SAVED,
           data: {
-            data: text,
+            answer: currentText,
+            numAttempts,
+            numAttemptsAllowed,
           },
         });
+
+        // correct answer submitted
+        if (currentText === answer) {
+          dispatchPostAction({
+            verb: SUBMITTED_CORRECT_ANSWER,
+            data: {
+              answer: currentText,
+              numAttempts,
+              numAttemptsAllowed,
+            },
+          });
+        }
       }
     );
   };
