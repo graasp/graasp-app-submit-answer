@@ -6,7 +6,7 @@ import {
   TEACHER_MODE,
 } from '../../src/config/settings';
 import {
-  confirmDeleteDialog,
+  buildConfirmDeleteDialogConfirmSelector,
   DELETE_RESPONSE_BUTTONS,
   SAVE_SETTINGS_BUTTON,
   HEADER_VISIBILITY_SWITCH,
@@ -76,7 +76,7 @@ const deleteAnswers = () => {
         btn.click();
         // get corresponding dialog id
         const currentId = btn.data('id');
-        cy.get(`#${currentId} ${confirmDeleteDialog}`).click();
+        cy.get(buildConfirmDeleteDialogConfirmSelector(currentId)).click();
         cy.wrap(btn).should('not.exist');
       });
     }
@@ -186,6 +186,7 @@ Cypress.Commands.add(
       });
     }
     // save
+    // clicks without throwing an error even if the element is not clickable
     cy.get(SAVE_SETTINGS_BUTTON).click({ force: true });
   }
 );

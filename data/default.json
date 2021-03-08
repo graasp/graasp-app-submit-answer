@@ -13,7 +13,7 @@
       "settings": {
         "headerVisible": false,
         "answer": "answer",
-        "hint":"hint",
+        "hint": "hint",
         "showAutomaticFeedback": true,
         "numAttemptsAllowed": 3
       },
@@ -54,7 +54,7 @@
       "settings": {
         "headerVisible": false,
         "answer": "answer",
-        "hint":"hint",
+        "hint": "hint",
         "showAutomaticFeedback": true,
         "numAttemptsAllowed": 3
       }

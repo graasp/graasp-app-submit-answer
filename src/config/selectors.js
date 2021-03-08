@@ -14,8 +14,8 @@ export const SETTINGS_MODAL_CYPRESS = 'settingsModal';
 export const SETTINGS_MODAL = `[data-cy=${SETTINGS_MODAL_CYPRESS}]`;
 export const RESPONSES_CYPRESS = 'responses';
 export const RESPONSES_TABLE = `[data-cy=${RESPONSES_CYPRESS}]`;
-export const HEADER_VISIBLITY_CYPRESS = 'headerVisibility';
-export const HEADER_VISIBILITY_SWITCH = `[data-cy=${HEADER_VISIBLITY_CYPRESS}] input`;
+export const HEADER_VISIBILITY_SWITCH_CYPRESS = 'headerVisibility';
+export const HEADER_VISIBILITY_SWITCH = `[data-cy=${HEADER_VISIBILITY_SWITCH_CYPRESS}] input`;
 export const SHOW_HINT_BUTTON_CYPRESS = 'showHint';
 export const SHOW_HINT_BUTTON = `[data-cy=${SHOW_HINT_BUTTON_CYPRESS}]`;
 export const ATTEMPT_INFORMATION_TEXT_CYPRESS = 'attemptInformation';
@@ -30,14 +30,14 @@ export const INCORRECT_ANSWER_FEEDBACK_ICON_CYPRESS =
 export const INCORRECT_ANSWER_FEEDBACK_ICON = `[data-cy=${INCORRECT_ANSWER_FEEDBACK_ICON_CYPRESS}]`;
 export const DELETE_RESPONSE_BUTTON_CYPRESS = 'deleteResponseButton';
 export const DELETE_RESPONSE_BUTTONS = `[data-cy=${DELETE_RESPONSE_BUTTON_CYPRESS}]`;
-export const confirmDeleteDialog = '[data-cy=confirmButton]';
-export const buildDeleteButton = (id) => `deleteButton-${id}`;
+export const buildConfirmDeleteDialogId = (id) => `confirmDeleteDialog-${id}`;
+export const buildDeleteButtonId = (id) => `deleteButton-${id}`;
 export const FEEDBACK_BUTTON_CYPRESS = 'feedbackButton';
 export const FEEDBACK_BUTTONS = `[data-cy=${FEEDBACK_BUTTON_CYPRESS}]`;
 export const FEEDBACK_INPUT = `textarea#inputTextField`;
-export const saveFeedbackButton = `[data-cy=submitButton]`;
-export const studentFeedbackText = `[data-cy=input] .MuiFormHelperText-root`;
-export const buildFeedbackButton = (id) => `feedbackButton-${id}`;
+export const SAVE_FEEDBACK_BUTTON_CYPRESS = `[data-cy=submitButton]`;
+export const STUDENT_FEEDBACK_TEXT = `[data-cy=input] .MuiFormHelperText-root`;
+export const buildFeedbackButtonId = (id) => `feedbackButton-${id}`;
 export const SAVE_SETTINGS_BUTTON_CYPRESS = 'saveSettingsButton';
 export const SAVE_SETTINGS_BUTTON = `[data-cy=${SAVE_SETTINGS_BUTTON_CYPRESS}]`;
 export const SHOW_AUTOMATIC_FEEDBACK_SWITCH_CYPRESS = 'showAutomaticFeedback';
@@ -46,3 +46,9 @@ export const HINT_INPUT_CYPRESS = 'hintInput';
 export const HINT_INPUT = `[data-cy=${HINT_INPUT_CYPRESS}] input`;
 export const NUM_ATTEMPTS_ALLOWED_INPUT_CYPRESS = 'numAttemptsAllowed';
 export const NUM_ATTEMPTS_ALLOWED_INPUT = `[data-cy=${NUM_ATTEMPTS_ALLOWED_INPUT_CYPRESS}] input`;
+export const CONFIRM_DIALOG_CONFIRM_BUTTON_CYPRESS =
+  'confirmDialogConfirmButton';
+export const buildConfirmDeleteDialogConfirmSelector = (id) =>
+  `#${buildConfirmDeleteDialogId(
+    id
+  )} [data-cy=${CONFIRM_DIALOG_CONFIRM_BUTTON_CYPRESS}]`;

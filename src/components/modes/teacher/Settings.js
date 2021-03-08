@@ -16,7 +16,7 @@ import Loader from '../../common/Loader';
 import { DEFAULT_SETTINGS } from '../../../reducers/appInstance';
 import { MAX_ATTEMPTS } from '../../../config/settings';
 import {
-  HEADER_VISIBLITY_CYPRESS,
+  HEADER_VISIBILITY_SWITCH_CYPRESS,
   HINT_INPUT_CYPRESS,
   NUM_ATTEMPTS_ALLOWED_INPUT_CYPRESS,
   SAVE_SETTINGS_BUTTON_CYPRESS,
@@ -162,7 +162,7 @@ class Settings extends Component {
 
     const headerVisibleSwitchControl = (
       <Switch
-        data-cy={HEADER_VISIBLITY_CYPRESS}
+        data-cy={HEADER_VISIBILITY_SWITCH_CYPRESS}
         color="primary"
         checked={headerVisible}
         onChange={this.handleChangeSwitch('headerVisible')}

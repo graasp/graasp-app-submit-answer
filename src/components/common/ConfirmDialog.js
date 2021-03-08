@@ -6,6 +6,7 @@ import DialogContent from '@material-ui/core/DialogContent';
 import DialogContentText from '@material-ui/core/DialogContentText';
 import DialogTitle from '@material-ui/core/DialogTitle';
 import PropTypes from 'prop-types';
+import { CONFIRM_DIALOG_CONFIRM_BUTTON_CYPRESS } from '../../config/selectors';
 
 const ConfirmDialog = (props) => {
   const {
@@ -42,7 +43,7 @@ const ConfirmDialog = (props) => {
           <Button
             onClick={handleConfirm}
             color="secondary"
-            data-cy="confirmButton"
+            data-cy={CONFIRM_DIALOG_CONFIRM_BUTTON_CYPRESS}
           >
             {confirmText}
           </Button>

@@ -19,8 +19,8 @@ import { FEEDBACK } from '../../../config/appInstanceResourceTypes';
 import FormDialog from '../../common/FormDialog';
 import { showErrorToast } from '../../../utils/toasts';
 import {
-  buildDeleteButton,
-  buildFeedbackButton,
+  buildConfirmDeleteDialogId,
+  buildFeedbackButtonId,
   DELETE_RESPONSE_BUTTON_CYPRESS,
   FEEDBACK_BUTTON_CYPRESS,
 } from '../../../config/selectors';
@@ -123,7 +123,7 @@ class Response extends Component {
       <>
         {data}
         <IconButton
-          data-id={buildFeedbackButton(_id)}
+          data-id={buildFeedbackButtonId(_id)}
           color="primary"
           onClick={this.handleToggleFeedbackDialog(true)}
           data-cy={FEEDBACK_BUTTON_CYPRESS}
@@ -131,7 +131,7 @@ class Response extends Component {
           <EditIcon />
         </IconButton>
         <FormDialog
-          id={buildFeedbackButton(_id)}
+          id={buildFeedbackButtonId(_id)}
           handleClose={this.handleToggleFeedbackDialog(false)}
           title={t('Feedback')}
           text={t('Submit feedback that will be visible to the student.')}
@@ -155,7 +155,7 @@ class Response extends Component {
         <TableCell>{this.renderFeedbackCell()}</TableCell>
         <TableCell>
           <IconButton
-            data-id={buildDeleteButton(_id)}
+            data-id={_id}
             data-cy={DELETE_RESPONSE_BUTTON_CYPRESS}
             color="primary"
             onClick={this.handleToggleConfirmDialog(true)}
@@ -163,8 +163,7 @@ class Response extends Component {
             <DeleteIcon />
           </IconButton>
           <ConfirmDialog
-            id={buildDeleteButton(_id)}
-            dataCy="confirmDeleteDialog"
+            id={buildConfirmDeleteDialogId(_id)}
             open={confirmDialogOpen}
             title={t('Delete Student Response')}
             text={t(

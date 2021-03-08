@@ -2,8 +2,8 @@ import { TEACHER_MODE } from '../../src/config/settings';
 import {
   TABLE_FIELDS,
   FEEDBACK_INPUT,
-  saveFeedbackButton,
-  studentFeedbackText,
+  SAVE_FEEDBACK_BUTTON_CYPRESS,
+  STUDENT_FEEDBACK_TEXT,
   APP_TITLE_TEXT,
   REFRESH_BUTTON,
   LOGO_IMAGE,
@@ -62,13 +62,13 @@ describe('<TeacherView />', () => {
           // get corresponding dialog id
           const currentId = btn.data('id');
           cy.get(FEEDBACK_INPUT).type(feedbackText);
-          cy.get(`#${currentId} ${saveFeedbackButton}`).click();
+          cy.get(`#${currentId} ${SAVE_FEEDBACK_BUTTON_CYPRESS}`).click();
           cy.get(`${RESPONSES_TABLE} tbody tr`).contains(feedbackText);
         });
 
       // check student can see feedback
       cy.onlineVisit({ appInstanceId: APP_INSTANCE_ID });
-      cy.get(studentFeedbackText).contains(feedbackText);
+      cy.get(STUDENT_FEEDBACK_TEXT).contains(feedbackText);
       cy.clearData();
     });
   });
