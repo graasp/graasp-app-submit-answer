@@ -14,6 +14,7 @@ class FormDialog extends Component {
   };
 
   static propTypes = {
+    id: PropTypes.string,
     open: PropTypes.bool.isRequired,
     handleClose: PropTypes.func.isRequired,
     handleSubmit: PropTypes.func.isRequired,
@@ -25,6 +26,7 @@ class FormDialog extends Component {
   };
 
   static defaultProps = {
+    id: '',
     text: '',
     submitText: 'Submit',
     cancelText: 'Cancel',
@@ -52,7 +54,7 @@ class FormDialog extends Component {
     }
   }
 
-  handleChangeTextField = event => {
+  handleChangeTextField = (event) => {
     this.setState({
       input: event.target.value,
     });
@@ -60,6 +62,7 @@ class FormDialog extends Component {
 
   render() {
     const {
+      id,
       open,
       handleClose,
       handleSubmit,
@@ -74,6 +77,7 @@ class FormDialog extends Component {
     return (
       <div>
         <Dialog
+          id={id}
           open={open}
           onClose={handleClose}
           aria-labelledby="form-dialog-title"
@@ -96,7 +100,11 @@ class FormDialog extends Component {
             <Button onClick={handleClose} color="secondary">
               {cancelText}
             </Button>
-            <Button onClick={() => handleSubmit(input)} color="primary">
+            <Button
+              data-cy="submitButton"
+              onClick={() => handleSubmit(input)}
+              color="primary"
+            >
               {submitText}
             </Button>
           </DialogActions>

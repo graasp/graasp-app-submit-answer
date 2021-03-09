@@ -12,6 +12,11 @@ import { ReactComponent as Logo } from '../../resources/logo.svg';
 import { DEFAULT_MODE, TEACHER_MODES } from '../../config/settings';
 import { getAppInstanceResources, getUsers } from '../../actions';
 import DownloadCsvButton from '../modes/teacher/DownloadCsvButton';
+import {
+  APP_TITLE_CYPRESS,
+  LOGO_CYPRESS,
+  REFRESH_BUTTON_CYPRESS,
+} from '../../config/selectors';
 
 class Header extends Component {
   static propTypes = {
@@ -55,7 +60,7 @@ class Header extends Component {
     if (TEACHER_MODES.includes(mode)) {
       const buttons = [
         <IconButton
-          data-cy="refresh"
+          data-cy={REFRESH_BUTTON_CYPRESS}
           onClick={this.handleRefresh}
           key="refresh"
         >
@@ -75,9 +80,9 @@ class Header extends Component {
       <header>
         <AppBar position="static">
           <Toolbar>
-            <Logo data-cy="logo" className={classes.logo} />
+            <Logo data-cy={LOGO_CYPRESS} className={classes.logo} />
             <Typography
-              data-cy="appTitle"
+              data-cy={APP_TITLE_CYPRESS}
               variant="h6"
               color="inherit"
               className={classes.grow}

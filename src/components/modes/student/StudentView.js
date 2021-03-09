@@ -31,6 +31,15 @@ import {
   SAVED,
   SUBMITTED_CORRECT_ANSWER,
 } from '../../../config/verbs';
+import {
+  INPUT_CYPRESS,
+  SAVE_INPUT_CYPRESS,
+  SHOW_HINT_BUTTON_CYPRESS,
+  ATTEMPT_INFORMATION_TEXT_CYPRESS,
+  HINT_ALERT_CYPRESS,
+  CORRECT_ANSWER_FEEDBACK_ICON_CYPRESS,
+  INCORRECT_ANSWER_FEEDBACK_ICON_CYPRESS,
+} from '../../../config/selectors';
 
 const styles = (theme) => ({
   main: {
@@ -255,7 +264,7 @@ class StudentView extends Component {
     const submitButton = (
       <Button
         type="submit"
-        data-cy="save"
+        data-cy={SAVE_INPUT_CYPRESS}
         variant="contained"
         color="primary"
         className={classes.button}
@@ -290,7 +299,7 @@ class StudentView extends Component {
 
     const showHintButton = (
       <Button
-        data-cy="showHint"
+        data-cy={SHOW_HINT_BUTTON_CYPRESS}
         variant="link"
         color="primary"
         onClick={this.handleShowHint}
@@ -342,11 +351,17 @@ class StudentView extends Component {
         <InputAdornment position="end">
           {isCorrect ? (
             <Tooltip title={t('You submitted the correct answer.')}>
-              <CheckCircleOutlineIcon color="primary" />
+              <CheckCircleOutlineIcon
+                data-cy={CORRECT_ANSWER_FEEDBACK_ICON_CYPRESS}
+                color="primary"
+              />
             </Tooltip>
           ) : (
             <Tooltip title={t('You submitted the wrong answer.')}>
-              <HighlightOffIcon color="primary" />
+              <HighlightOffIcon
+                data-cy={INCORRECT_ANSWER_FEEDBACK_ICON_CYPRESS}
+                color="primary"
+              />
             </Tooltip>
           )}
         </InputAdornment>
@@ -357,6 +372,7 @@ class StudentView extends Component {
         <Grid item xs={12} className={classes.main}>
           {showHint && (
             <Alert
+              data-cy={HINT_ALERT_CYPRESS}
               onClose={this.handleHideHint}
               className={classes.indicator}
               severity="info"
@@ -379,7 +395,7 @@ class StudentView extends Component {
                 },
                 endAdornment: automaticFeedback,
               }}
-              data-cy="input"
+              data-cy={INPUT_CYPRESS}
               key="inputTextField"
               id="inputTextField"
               label={t('Type Here')}
@@ -398,6 +414,7 @@ class StudentView extends Component {
             className={classes.indicator}
             align="right"
             color="textSecondary"
+            data-cy={ATTEMPT_INFORMATION_TEXT_CYPRESS}
           >
             {`${t(
               'You have submitted'

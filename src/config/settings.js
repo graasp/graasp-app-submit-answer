@@ -23,3 +23,5 @@ export const TEACHER_MODES = [TEACHER_MODE, 'producer', 'educator', 'admin'];
 
 export const DEFAULT_VISIBILITY = 'private';
 export const PUBLIC_VISIBILITY = 'public';
+
+export const MAX_ATTEMPTS = 10;
