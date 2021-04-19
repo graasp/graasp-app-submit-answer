@@ -2,6 +2,14 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## 0.1.0 (2021-04-19)
+
+
+### Features
+
+* track correct answer in action ([46b6e89](https://github.com/graasp/graasp-app-submit-answer/commit/46b6e897b305d7b26a85afb4af6ac12853f00087))
+* track incorrect submissions explicitly ([f7d658c](https://github.com/graasp/graasp-app-submit-answer/commit/f7d658ce3ef25c2e8c4ec7e2c0be860a499eb2a2))
+
 ### [0.3.4](https://github.com/graasp/graasp-app-text-input/compare/v0.3.3...v0.3.4) (2020-03-29)
 
 ### Bug Fixes
