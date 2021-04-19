@@ -30,6 +30,7 @@ import {
   SHOWED_HINT,
   SAVED,
   SUBMITTED_CORRECT_ANSWER,
+  SUBMITTED_INCORRECT_ANSWER,
 } from '../../../config/verbs';
 import {
   INPUT_CYPRESS,
@@ -227,6 +228,17 @@ class StudentView extends Component {
         if (currentText === answer) {
           dispatchPostAction({
             verb: SUBMITTED_CORRECT_ANSWER,
+            data: {
+              answer: currentText,
+              numAttempts,
+              numAttemptsAllowed,
+            },
+          });
+        }
+        // incorrect answer submitted
+        else {
+          dispatchPostAction({
+            verb: SUBMITTED_INCORRECT_ANSWER,
             data: {
               answer: currentText,
               numAttempts,
